@@ -44,3 +44,4 @@ app.*.map.json
 
 #secrets
 lib/core/secrets/secrets.dart
+lib/core/secrets/secrets.dart
