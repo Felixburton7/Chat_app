@@ -1,7 +1,3 @@
-Sure, here's a concise and personalized description for your GitHub README file:
-
----
-
 ## My Chat App
 
 Welcome to My Chat App! 🚀 This cross-platform chat application lets users sign up and chat in real-time, all powered by the amazing Flutter and Supabase.
