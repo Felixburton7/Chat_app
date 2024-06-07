@@ -1,0 +1,4 @@
+final String SUPABASE_URL = 'https://nfkxqgsgimjjphqndfkj.supabase.co';
+
+final String SUPABASE_ANON_KEY =
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5ma3hxZ3NnaW1qanBocW5kZmtqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTc3OTA5OTYsImV4cCI6MjAzMzM2Njk5Nn0.JKTFcBVa8uXiuiOhmkJ8mfCDY218YauMu65_jeMsyQI';
