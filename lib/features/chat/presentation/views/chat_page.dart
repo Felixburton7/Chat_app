@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:my_chat_app/core/utils/constants/constants.dart';
 import 'package:my_chat_app/features/chat/data/models/message_model.dart';
 import 'package:my_chat_app/features/chat/data/models/profile_model.dart';
+import 'package:my_chat_app/features/chat/presentation/views/splash_page.dart';
 
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:timeago/timeago.dart';
@@ -56,7 +57,10 @@ class _ChatPageState extends State<ChatPage> {
   void _logout() async {
     await supabase.auth.signOut();
     if (mounted) {
-      Navigator.of(context).popUntil((route) => route.isFirst);
+      Navigator.of(context).pushAndRemoveUntil(
+        MaterialPageRoute(builder: (context) => const SplashPage()),
+        (route) => false,
+      );
     }
   }
 

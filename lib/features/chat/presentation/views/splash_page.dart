@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:my_chat_app/core/utils/constants/constants.dart';
+import 'package:my_chat_app/core/utils/widgets/bottom_navigation.dart';
 import 'package:my_chat_app/features/chat/presentation/views/chat_page.dart';
 import 'package:my_chat_app/features/chat/presentation/views/register_page.dart';
 
 /// Page to redirect users to the appropriate page depending on the initial auth state
 class SplashPage extends StatefulWidget {
   const SplashPage({Key? key}) : super(key: key);
+
+  static Route<void> route() {
+    return MaterialPageRoute(builder: (context) => const SplashPage());
+  }
 
   @override
   SplashPageState createState() => SplashPageState();
@@ -36,6 +41,11 @@ class SplashPageState extends State<SplashPage> {
 
   @override
   Widget build(BuildContext context) {
+    Future.delayed(Duration(seconds: 2), () {
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (context) => const BottomNavigation()),
+      );
+    });
     return const Scaffold(body: preloader);
   }
 }
