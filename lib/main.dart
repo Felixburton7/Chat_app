@@ -38,24 +38,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-// SplashPage should navigate to BottomNavigation once the app is ready
-class SplashPage extends StatelessWidget {
-  const SplashPage({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    // Simulate loading and then navigate to BottomNavigation
-    Future.delayed(Duration(seconds: 2), () {
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) => const BottomNavigation()),
-      );
-    });
-
-    return Scaffold(
-      body: Center(
-        child: CircularProgressIndicator(),
-      ),
-    );
-  }
-}

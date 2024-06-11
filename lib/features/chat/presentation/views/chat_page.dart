@@ -249,3 +249,108 @@ class _ChatBubble extends StatelessWidget {
     );
   }
 }
+
+
+// //BloC Version
+// import 'package:equatable/equatable.dart';
+// import 'package:my_chat_app/models/message.dart';
+
+// abstract class ChatEvent extends Equatable {
+//   const ChatEvent();
+
+//   @override
+//   List<Object> get props => [];
+// }
+
+// class LoadMessages extends ChatEvent {}
+
+// class SendMessage extends ChatEvent {
+//   final String content;
+
+//   const SendMessage(this.content);
+
+//   @override
+//   List<Object> get props => [content];
+// }
+
+
+// // Chat State Class
+// import 'package:equatable/equatable.dart';
+// import 'package:my_chat_app/models/message.dart';
+
+// abstract class ChatState extends Equatable {
+//   const ChatState();
+
+//   @override
+//   List<Object> get props => [];
+// }
+
+// class ChatInitial extends ChatState {}
+
+// class ChatLoading extends ChatState {}
+
+// class ChatLoaded extends ChatState {
+//   final List<Message> messages;
+
+//   const ChatLoaded(this.messages);
+
+//   @override
+//   List<Object> get props => [messages];
+// }
+
+// class ChatError extends ChatState {
+//   final String message;
+
+//   const ChatError(this.message);
+
+//   @override
+//   List<Object> get props => [message];
+// }
+
+
+// //Chat BloC Class
+// import 'package:bloc/bloc.dart';
+// import 'package:my_chat_app/models/message.dart';
+// import 'package:my_chat_app/models/profile.dart';
+// import 'package:my_chat_app/utils/constants.dart';
+// import 'package:supabase_flutter/supabase_flutter.dart';
+// import 'chat_event.dart';
+// import 'chat_state.dart';
+
+// class ChatBloc extends Bloc<ChatEvent, ChatState> {
+//   final SupabaseClient supabase;
+
+//   ChatBloc({required this.supabase}) : super(ChatInitial()) {
+//     on<LoadMessages>(_onLoadMessages);
+//     on<SendMessage>(_onSendMessage);
+//   }
+
+//   Future<void> _onLoadMessages(LoadMessages event, Emitter<ChatState> emit) async {
+//     emit(ChatLoading());
+//     try {
+//       final myUserId = supabase.auth.currentUser!.id;
+//       final messages = await supabase
+//           .from('messages')
+//           .select()
+//           .order('created_at')
+//           .execute();
+//       final messageList = messages.data.map((map) => Message.fromMap(map: map, myUserId: myUserId)).toList();
+//       emit(ChatLoaded(messageList));
+//     } catch (e) {
+//       emit(ChatError(e.toString()));
+//     }
+//   }
+
+//   Future<void> _onSendMessage(SendMessage event, Emitter<ChatState> emit) async {
+//     try {
+//       final myUserId = supabase.auth.currentUser!.id;
+//       await supabase.from('messages').insert({
+//         'profile_id': myUserId,
+//         'content': event.content,
+//       }).execute();
+//       add(LoadMessages()); // Reload messages after sending a new one
+//     } catch (e) {
+//       emit(ChatError(e.toString()));
+//     }
+//   }
+// }
